@@ -2,13 +2,13 @@ from sys import argv
 
 
 def parse_inventory(args: list[str]) -> dict[str, int]:
-    """Parse 'item:quantity' arguments into an inventory dictionary."""
     inventory: dict[str, int] = {}
     for arg in args:
         try:
             parts: list[str] = arg.split(":")
             if len(parts) != 2:
-                raise ValueError(f"Expected 'item:quantity' format, got '{arg}'")
+                raise ValueError(f"Expected 'item:quantity' "
+                                 f":format, got '{arg}'")
             name: str = parts[0]
             quantity: int = int(parts[1])
             inventory.update({name: quantity})
@@ -20,7 +20,6 @@ def parse_inventory(args: list[str]) -> dict[str, int]:
 def categorize_items(
     inventory: dict[str, int]
 ) -> dict[str, dict[str, int]]:
-    """Organize items into abundance categories."""
     categories: dict[str, dict[str, int]] = {
         "Abundant": {},
         "Moderate": {},
@@ -37,7 +36,6 @@ def categorize_items(
 
 
 def display_inventory(inventory: dict[str, int]) -> None:
-    """Display full inventory analysis."""
     print("=== Inventory System Analysis ===")
     total_items: int = sum(inventory.values())
     print(f"Total items in inventory: {total_items}")
@@ -89,9 +87,9 @@ def display_inventory(inventory: dict[str, int]) -> None:
 
 
 def main() -> None:
-    """Entry point for Inventory Master."""
     if len(argv) < 2:
-        print("Usage: python3 ft_inventory_system.py item1:qty1 item2:qty2 ...")
+        print("Usage: python3 ft_inventory_system.py "
+              "item1:qty1 item2:qty2 ...")
         return
     inventory: dict[str, int] = parse_inventory(argv[1:])
     if not inventory:

@@ -1,5 +1,4 @@
 def get_player_achievements() -> dict[str, set[str]]:
-    """Return hardcoded player achievement sets."""
     alice: set[str] = {
         "first_kill", "level_10", "treasure_hunter", "speed_demon"
     }
@@ -16,7 +15,6 @@ def get_player_achievements() -> dict[str, set[str]]:
 def find_rare_achievements(
     players: dict[str, set[str]]
 ) -> set[str]:
-    """Find achievements owned by exactly one player."""
     all_achievements: list[str] = [
         ach for achievements in players.values() for ach in achievements
     ]
@@ -26,7 +24,6 @@ def find_rare_achievements(
 
 
 def analyze_achievements(players: dict[str, set[str]]) -> None:
-    """Display achievement analytics using set operations."""
     print("=== Achievement Tracker System ===")
     for name, achievements in players.items():
         print(f"Player {name} achievements: {achievements}")
@@ -58,7 +55,6 @@ def analyze_achievements(players: dict[str, set[str]]) -> None:
 
 
 def main() -> None:
-    """Entry point for Achievement Hunter."""
     players: dict[str, set[str]] = get_player_achievements()
     analyze_achievements(players)
 

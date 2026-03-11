@@ -27,7 +27,6 @@ ACHIEVEMENTS_DATA: list[dict[str, str]] = [
 
 
 def list_comprehension_examples() -> None:
-    """Demonstrate list comprehensions for filtering and transforming data."""
     print("=== List Comprehension Examples ===")
 
     high_scorers: list[str] = [
@@ -49,7 +48,6 @@ def list_comprehension_examples() -> None:
 
 
 def dict_comprehension_examples() -> None:
-    """Demonstrate dict comprehensions for mappings and groupings."""
     print()
     print("=== Dict Comprehension Examples ===")
 
@@ -78,7 +76,6 @@ def dict_comprehension_examples() -> None:
 
 
 def set_comprehension_examples() -> None:
-    """Demonstrate set comprehensions for unique value extraction."""
     print()
     print("=== Set Comprehension Examples ===")
 
@@ -97,7 +94,6 @@ def set_comprehension_examples() -> None:
 
 
 def combined_analysis() -> None:
-    """Combine all comprehension types for a final summary."""
     print()
     print("=== Combined Analysis ===")
 
@@ -131,11 +127,11 @@ def combined_analysis() -> None:
         next(p["score"] for p in PLAYERS_DATA if p["name"] == top_name)
     ))
     top_ach: int = achievement_counts[top_name]
-    print(f"Top performer: {top_name} ({top_score} points, {top_ach} achievements)")
+    print(f"Top performer: {top_name} ({top_score} "
+          f"points, {top_ach} achievements)")
 
 
 def main() -> None:
-    """Entry point for Data Alchemist dashboard."""
     print("=== Game Analytics Dashboard ===")
     print()
     list_comprehension_examples()

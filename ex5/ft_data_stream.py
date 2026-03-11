@@ -10,7 +10,6 @@ EVENTS: list[str] = ["killed monster", "found treasure", "leveled up",
 def game_event_stream(
     count: int,
 ) -> Generator[dict[str, int | str], None, None]:
-    """Generate game events on-demand using a stream."""
     for i in range(count):
         player: str = PLAYERS[i % len(PLAYERS)]
         event: str = EVENTS[i % len(EVENTS)]
@@ -19,7 +18,6 @@ def game_event_stream(
 
 
 def fibonacci_generator() -> Generator[int, None, None]:
-    """Yield Fibonacci numbers indefinitely."""
     a: int = 0
     b: int = 1
     while True:
@@ -28,7 +26,6 @@ def fibonacci_generator() -> Generator[int, None, None]:
 
 
 def prime_generator() -> Generator[int, None, None]:
-    """Yield prime numbers indefinitely."""
     candidate: int = 2
     while True:
         is_prime: bool = all(
@@ -40,14 +37,13 @@ def prime_generator() -> Generator[int, None, None]:
 
 
 def process_stream(count: int) -> None:
-    """Process and analyze a stream of game events."""
     print(f"Processing {count} game events...")
     print()
 
     total_events: int = 0
     high_level_count: int = 0
     treasure_count: int = 0
-    levelup_count: int = 0
+    level_up_count: int = 0
 
     start: float = time()
 
@@ -73,7 +69,7 @@ def process_stream(count: int) -> None:
         if "treasure" in evt_type:
             treasure_count += 1
         if "leveled" in evt_type:
-            levelup_count += 1
+            level_up_count += 1
 
     elapsed: float = time() - start
 
@@ -82,23 +78,26 @@ def process_stream(count: int) -> None:
     print(f"Total events processed: {total_events}")
     print(f"High-level players (10+): {high_level_count}")
     print(f"Treasure events: {treasure_count}")
-    print(f"Level-up events: {levelup_count}")
+    print(f"Level-up events: {level_up_count}")
     print("Memory usage: Constant (streaming)")
     print(f"Processing time: {elapsed:.3f} seconds")
 
 
 def demonstrate_generators() -> None:
-    """Show Fibonacci and prime generators in action."""
     print()
     print("=== Generator Demonstration ===")
 
     fib_gen: Generator[int, None, None] = fibonacci_generator()
-    fibs: list[int] = [next(fib_gen) for _ in range(10)]
-    print(f"Fibonacci sequence (first 10): {', '.join(str(n) for n in fibs)}")
+    limit: int = 50
+    print(f"Fibonacci sequence (first {limit}):", end=" ")
+    for _ in range(limit - 1):
+        print(next(fib_gen), end=", ")
+    print(next(fib_gen))
 
     prime_gen: Generator[int, None, None] = prime_generator()
-    primes: list[int] = [next(prime_gen) for _ in range(5)]
-    print(f"Prime numbers (first 5): {', '.join(str(p) for p in primes)}")
+    primes: list[int] = [next(prime_gen) for _ in range(limit)]
+    print(f"Prime numbers (first {limit}): "
+          f"{', '.join(str(p) for p in primes)}")
 
 
 def main() -> None:
