@@ -2,7 +2,6 @@ from sys import argv
 
 
 def parse_scores(raw_args: list[str]) -> list[int]:
-    """Parse and validate score arguments into a list of integers."""
     scores: list[int] = []
     for arg in raw_args:
         try:
@@ -13,7 +12,6 @@ def parse_scores(raw_args: list[str]) -> list[int]:
 
 
 def analyze_scores(scores: list[int]) -> None:
-    """Calculate and display analytics for a list of scores."""
     print("=== Player Score Analytics ===")
 
     if not scores:

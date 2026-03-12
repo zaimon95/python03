@@ -2,7 +2,6 @@ from sys import argv
 
 
 def display_command_info(args: list[str]) -> None:
-    """Display command-line argument information."""
     print("=== Command Quest ===")
     program_name: str = args[0]
 
